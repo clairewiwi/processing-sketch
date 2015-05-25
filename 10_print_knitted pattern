@@ -1,0 +1,26 @@
+//This code was tweeked from a sketch by Caesy Reas. Author of a book on 
+//on 10 PRINT CHR$(205.5+RND(1)); : GOTO 10 which celebrates this perticular
+//pattern generated in BASIC on the Commodore 64.
+//I modified it to adapt it for a knitting pattern that was knitted on my hacked knitting machine.
+//You can check out the result on: https://xxxclairewilliamsxxx.wordpress.com/2014/12/18/generated-knitted-patterns/
+
+
+int w = 640,
+    step = 10;  // note w/step must be an integer!!! 
+    //w=640  step=10   
+
+void setup(){
+  size(w,w);
+}
+
+void draw(){
+int x=frameCount%(int(w/step))*step;
+int c= int(random(2))*step;
+line(x+c,w-(2*step+1),x+step-c,w-(step+1));
+if(x==(w-step))set(0,0,get(0,step,w,x));
+
+// here is to save your generated image
+if (keyPressed){
+  saveFrame("images/basic-####.png");
+}
+} 
